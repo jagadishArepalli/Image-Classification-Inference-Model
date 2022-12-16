@@ -1,56 +1,65 @@
-# Image-Classification-Inference-Model
+# Cloud Computing
 
-## Prediction for Building Image
 
-<img width="568" alt="image" src="https://multimedia-commons.s3-us-west-2.amazonaws.com/data/images/139/136/139136bb43e41df8949f873fb44af.jpg">
+
+### <ins>Project Demo</ins>
+
+```sh
+https://www.youtube.com/watch?v=v-UtoLRWc-c
+```
+
+### <ins>Steps to execute the code in AWS</ins>
+
+
+### IAM role creation
+•	Create an IAM role which has the following policies-
+  * AWS S3 full access 
+  * Sagemaker full access
+  * AWS lambda execute permission policies.
+
+### How to run the code in AWS SageMaker?
+•	Navigate to notebook instances in the AWS sagemaker console and try to create a new notebook instance and choose an appropriate instance type for faster execution we have used ml.m5.xlarge, ml.m5.4xlarge and ml.c5.4xlarge.
+•	After creating the new notebook instance open the notebook and in the left sidebar, choose the File Browser icon (   ) to display the file browser.
+•	Now upload the files as it is like in this repository. (Except lambda.py)
+•	Now download the dataset from https://www.kaggle.com/puneet6060/intel-image-classification/download, rename the zip file to imageclassification and upload it to the Jupyter Lab. 
+•	After opening the notebook file(.ipynb) choose the kernel as conda_amazonei_pytorch_latest_p37 before execution.
+Packages that need to be installed
+•	Seaborn package must be installed before starting the execution.
+•	!pip install seaborn
+
+### How to run the code in AWS Lambda?
+•	Create a new Lambda function in the AWS Lambda console and copy the code from the lambda_function.py and paste in the new function created.
+
+### Creating and deploying API
+•	Create a new POST API in the API gateway console and connect it to the lambda function created above.
+
+### Results
+For checking the results copy the url of the deployed API and paste it in the postman and give the json body in the below format.
+
+#### Invoke URL
+
+
+```sh
+https://bveo5csfsh.execute-api.us-east-2.amazonaws.com/prod
+```
+
+#### Input parameters
+
+```sh
+{
+   "url":"https://multimedia-commons.s3-us-west-2.amazonaws.com/data/images/139/015/1390157d4caaf290962de5c5fb4c42.jpg"
+}
+
+```
+Or
+ 
+Use the below curl syntax to check it in the terminal.
 
 ```sh
 curl -i -X POST -d '{"url": "https://multimedia-commons.s3-us-west-2.amazonaws.com/data/images/139/136/139136bb43e41df8949f873fb44af.jpg"}' https://bveo5csfsh.execute-api.us-east-2.amazonaws.com/prod
 ```
 
-<img width="568" alt="image" src="https://user-images.githubusercontent.com/90411969/205808746-fe1705f2-20d9-4ad3-81c8-46e8d418a38a.png">
 
-
-## Prediction for sea
-
-<img width="568" alt="image" src="https://multimedia-commons.s3-us-west-2.amazonaws.com/data/images/139/019/1390196df443f2cf614f2255ae75fcf8.jpg">
-
-```sh
-curl -i -X POST -d '{"url": "https://multimedia-commons.s3-us-west-2.amazonaws.com/data/images/139/019/1390196df443f2cf614f2255ae75fcf8.jpg"}' https://bveo5csfsh.execute-api.us-east-2.amazonaws.com/prod
-```
-
-<img width="565" alt="image" src="https://user-images.githubusercontent.com/90411969/205808567-fd39b8f1-cf05-4381-a4a5-5416c05f0745.png">
-
-## Prediction for Glacier
-
-<img width="568" alt="image" src="https://multimedia-commons.s3-us-west-2.amazonaws.com/data/images/139/015/1390157d4caaf290962de5c5fb4c42.jpg">
-
-```sh
-curl -i -X POST -d '{"url": "https://multimedia-commons.s3-us-west-2.amazonaws.com/data/images/139/015/1390157d4caaf290962de5c5fb4c42.jpg"}' https://bveo5csfsh.execute-api.us-east-2.amazonaws.com/prod
-```
-
-<img width="567" alt="image" src="https://user-images.githubusercontent.com/90411969/205811654-21757a86-1c6c-49b1-82aa-37e6fd6dc43a.png">
-
-## Prediction for Forest
-
-<img width="568" alt="image" src="https://multimedia-commons.s3-us-west-2.amazonaws.com/data/images/002/010/00201099c5bf0d794c9a951b74390.jpg">
-
-```sh
-curl -i -X POST -d '{"url": "https://multimedia-commons.s3-us-west-2.amazonaws.com/data/images/002/010/00201099c5bf0d794c9a951b74390.jpg"}' https://bveo5csfsh.execute-api.us-east-2.amazonaws.com/prod
-```
-
-<img width="570" alt="image" src="https://user-images.githubusercontent.com/90411969/205811989-b164f1c9-5b81-49af-8dc1-b960072cf414.png">
-
-
-## Prediction of Mountain
-
-<img width="568" alt="image" src="https://multimedia-commons.s3-us-west-2.amazonaws.com/data/images/139/145/1391457e4a2e25557cbf956aaee4345.jpg">
-
-```sh
-curl -i -X POST -d '{"url": "https://multimedia-commons.s3-us-west-2.amazonaws.com/data/images/139/145/1391457e4a2e25557cbf956aaee4345.jpg"}' https://bveo5csfsh.execute-api.us-east-2.amazonaws.com/prod
-```
-
-<img width="569" alt="image" src="https://user-images.githubusercontent.com/90411969/205812394-1ad4166b-92a3-4928-b9dc-d35c11808ae4.png">
 
 
 
